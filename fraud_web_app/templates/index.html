@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Credit Card Fraud Detection</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:"Segoe UI", Tahoma, sans-serif;
+    height:100vh;
+    background:
+      linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+      url("/static/bg.jpg") center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* Main Card */
+.container{
+    background:#ffffff;
+    width:460px;
+    padding:35px 40px;
+    border-radius:18px;
+    box-shadow:0 25px 60px rgba(0,0,0,.55);
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+h1{
+    text-align:center;
+    color:#1c2833;
+    margin-bottom:6px;
+}
+
+.subtitle{
+    text-align:center;
+    font-size:14px;
+    color:#6c757d;
+    margin-bottom:30px;
+}
+
+/* Form */
+label{
+    font-weight:600;
+    font-size:14px;
+    color:#2c3e50;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin-top:6px;
+    margin-bottom:18px;
+    border-radius:8px;
+    border:1px solid #ced4da;
+    font-size:14px;
+}
+
+input:focus{
+    outline:none;
+    border-color:#1f3c4d;
+}
+
+/* Button */
+button{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:#1f3c4d;
+    color:white;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#162f3d;
+}
+
+/* Details */
+.details{
+    margin-top:25px;
+    padding:14px;
+    background:#f4f6f7;
+    border-radius:10px;
+    font-size:14px;
+    color:#2c3e50;
+}
+
+/* Result */
+.result{
+    margin-top:18px;
+    padding:16px;
+    text-align:center;
+    font-weight:bold;
+    border-radius:10px;
+    font-size:16px;
+}
+
+.fraud{
+    background:#fdecea;
+    color:#c0392b;
+}
+
+.genuine{
+    background:#e9f7ef;
+    color:#1e8449;
+}
+
+.probability{
+    margin-top:10px;
+    text-align:center;
+    font-size:14px;
+    color:#34495e;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    margin-top:22px;
+    font-size:12px;
+    color:#7f8c8d;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h1>Credit Card Fraud Detection</h1>
+<p class="subtitle">Machine Learning Based Transaction Analysis</p>
+
+<form method="POST">
+<label>Transaction Time</label>
+<input type="number" name="time" placeholder="e.g. 80000" required>
+
+<label>Transaction Amount</label>
+<input type="number" name="amount" placeholder="e.g. 5000" required>
+
+<button type="submit">Analyze Transaction</button>
+</form>
+
+{% if result %}
+<div class="details">
+<b>Entered Details</b><br>
+Transaction Time : {{ time }}<br>
+Transaction Amount : ₹{{ amount }}
+</div>
+
+<div class="result {% if result=='Fraud' %}fraud{% else %}genuine{% endif %}">
+{% if result=='Fraud' %}
+⚠️ Fraud Transaction
+{% else %}
+✅ Genuine Transaction
+{% endif %}
+</div>
+
+<div class="probability">
+Fraud Probability : <b>{{ prob }}%</b>
+</div>
+{% endif %}
+
+<footer>© 2026 | Credit Card Fraud Detection using ML</footer>
+</div>
+
+</body>
+</html>
