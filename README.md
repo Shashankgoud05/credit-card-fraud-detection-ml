@@ -1,2 +1,22 @@
-# credit-card-fraud-detection-ml
-Credit Card Fraud Detection Using Machine Learning is a web-based application that analyzes transaction details to identify fraudulent activities. A supervised machine learning model is used to classify transactions as genuine or fraudulent, helping enhance financial security and reduce online payment fraud.
+# Credit Card Fraud Detection using Machine Learning
+
+## 📌 Overview
+This project is a Machine Learning based web application that detects fraudulent credit card transactions.  
+It uses a trained ML model and a Flask web interface to classify transactions as **Fraud** or **Genuine**.
+
+## 🚀 Features
+- Fraud detection using ML
+- Clean and professional UI
+- Transaction details display
+- Fraud probability estimation
+- Web-based interface
+
+## 🛠️ Technologies Used
+- Python
+- Flask
+- Scikit-learn
+- NumPy
+- Joblib
+- HTML & CSS
+
+## 📂 Project Structure
