@@ -2,6 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+
+<!-- 🔥 VERY IMPORTANT FOR MOBILE -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Credit Card Fraud Detection</title>
 
 <style>
@@ -12,20 +16,23 @@
 body{
     margin:0;
     font-family:"Segoe UI", Tahoma, sans-serif;
-    height:100vh;
+    min-height:100vh;
     background:
-      linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+      linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
       url("/static/bg.jpg") center/cover no-repeat;
+
     display:flex;
     justify-content:center;
     align-items:center;
+    padding:16px; /* mobile spacing */
 }
 
 /* Main Card */
 .container{
     background:#ffffff;
-    width:460px;
-    padding:35px 40px;
+    width:100%;
+    max-width:460px;   /* desktop size */
+    padding:30px 26px;
     border-radius:18px;
     box-shadow:0 25px 60px rgba(0,0,0,.55);
     animation: fadeIn 0.6s ease-in-out;
@@ -40,13 +47,14 @@ h1{
     text-align:center;
     color:#1c2833;
     margin-bottom:6px;
+    font-size:22px;
 }
 
 .subtitle{
     text-align:center;
     font-size:14px;
     color:#6c757d;
-    margin-bottom:30px;
+    margin-bottom:28px;
 }
 
 /* Form */
@@ -91,7 +99,7 @@ button:hover{
 
 /* Details */
 .details{
-    margin-top:25px;
+    margin-top:22px;
     padding:14px;
     background:#f4f6f7;
     border-radius:10px;
@@ -129,9 +137,16 @@ button:hover{
 /* Footer */
 footer{
     text-align:center;
-    margin-top:22px;
+    margin-top:20px;
     font-size:12px;
     color:#7f8c8d;
+}
+
+/* 🔥 EXTRA MOBILE POLISH */
+@media (max-width: 480px){
+    h1{ font-size:20px; }
+    .subtitle{ font-size:13px; }
+    button{ font-size:15px; padding:12px; }
 }
 </style>
 </head>
@@ -152,7 +167,7 @@ footer{
 <button type="submit">Analyze Transaction</button>
 </form>
 
-{% if result %}
+{% if result is not none %}
 <div class="details">
 <b>Entered Details</b><br>
 Transaction Time : {{ time }}<br>
